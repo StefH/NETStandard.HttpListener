@@ -1,0 +1,37 @@
+os: Visual Studio 2015
+
+version: 1.0.0.{build}
+
+configuration:
+- Release
+
+platform: Any CPU
+
+init:
+- ps: $Env:LABEL = "CI" + $Env:APPVEYOR_BUILD_NUMBER.PadLeft(5, "0")
+
+install:
+- ps: Start-FileDownload 'https://download.microsoft.com/download/0/A/3/0A372822-205D-4A86-BFA7-084D2CBE9EDF/DotNetCore.1.0.1-SDK.1.0.0.Preview2-003133-x64.exe'
+- cmd: DotNetCore.1.0.1-SDK.1.0.0.Preview2-003133-x64 /quiet
+
+environment:
+  PATH: $(PATH);$(PROGRAMFILES)\dotnet\
+
+build_script:
+- appveyor-retry dotnet restore .\src\NETStandard.HttpListener -v Minimal
+- appveyor-retry dotnet restore .\src\TestConsoleApp -v Minimal
+- appveyor-retry nuget restore .\src\TestApp\TestApp.csproj -PackagesDirectory packages
+- appveyor-retry dotnet restore .\test\NETStandard.HttpListener.Tests  -v Minimal
+
+- dotnet build .\src\NETStandard.HttpListener\project.json -c %CONFIGURATION%
+- dotnet build .\src\TestConsoleApp\project.json -c %CONFIGURATION%
+- cmd: msbuild .\src\TestApp\TestApp.csproj /p:Configuration=%CONFIGURATION% /p:Platform=AnyCPU
+
+test_script:
+- dotnet test -c %CONFIGURATION% --no-build .\test\NETStandard.HttpListener.Tests
+
+artifacts:
+- path: artifacts\**\*.*
+
+cache:
+- '%USERPROFILE%\.nuget\packages'
