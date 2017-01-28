@@ -3,6 +3,7 @@ A simple library based on (https://github.com/robertsundstrom/HttpListener) that
 
 [![Build status](https://ci.appveyor.com/api/projects/status/192if73p5og2o2yq?svg=true)](https://ci.appveyor.com/project/StefH/netstandard-httplistener)
 
+[![NuGet Badge](https://buildstats.info/nuget/NETStandard.HttpListener)](https://www.nuget.org/packages/NETStandard.HttpListener)
 
 ## Overview
 
