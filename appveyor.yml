@@ -20,7 +20,7 @@ environment:
 build_script:
 - appveyor-retry dotnet restore .\src\NETStandard.HttpListener -v Minimal
 - appveyor-retry dotnet restore .\src\TestConsoleApp -v Minimal
-- appveyor-retry nuget restore .\src\TestApp\TestApp.csproj -PackagesDirectory packages
+# - appveyor-retry nuget restore .\src\TestApp\TestApp.csproj -PackagesDirectory packages
 - appveyor-retry dotnet restore .\test\NETStandard.HttpListener.Tests  -v Minimal
 
 - dotnet build .\src\NETStandard.HttpListener\project.json -c %CONFIGURATION%
