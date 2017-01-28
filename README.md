@@ -1,6 +1,9 @@
 # NETStandard.HttpListener .NET Core and UWP
 A simple library based on (https://github.com/robertsundstrom/HttpListener) that essentially allows for building your own HTTP server on .NET Core and the Universal Windows Platform (UWP).
 
+[![Build status](https://ci.appveyor.com/api/projects/status/192if73p5og2o2yq?svg=true)](https://ci.appveyor.com/project/StefH/netstandard-httplistener)
+
+
 ## Overview
 
 This library fills the void left by the missing System.Net.Http.HttpListener in .NET Core and Universal Windows Platform (UWP).
