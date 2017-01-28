@@ -21,10 +21,11 @@ build_script:
 - appveyor-retry dotnet restore .\src\NETStandard.HttpListener -v Minimal
 - appveyor-retry dotnet restore .\src\TestConsoleApp -v Minimal
 # - appveyor-retry nuget restore .\src\TestApp\TestApp.csproj -PackagesDirectory packages
-- appveyor-retry dotnet restore .\test\NETStandard.HttpListener.Tests  -v Minimal
+- appveyor-retry dotnet restore .\test\NETStandard.HttpListener.Tests -v Minimal
 
 - dotnet build .\src\NETStandard.HttpListener\project.json -c %CONFIGURATION%
 - dotnet build .\src\TestConsoleApp\project.json -c %CONFIGURATION%
+- dotnet build .\test\NETStandard.HttpListener.Tests\project.json -c %CONFIGURATION%
 #- cmd: msbuild .\src\TestApp\TestApp.csproj /p:Configuration=%CONFIGURATION% /p:Platform=x86
 
 test_script:
