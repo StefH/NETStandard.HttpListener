@@ -25,7 +25,7 @@ build_script:
 
 - dotnet build .\src\NETStandard.HttpListener\project.json -c %CONFIGURATION%
 - dotnet build .\src\TestConsoleApp\project.json -c %CONFIGURATION%
-- cmd: msbuild .\src\TestApp\TestApp.csproj /p:Configuration=%CONFIGURATION% /p:Platform=x86
+#- cmd: msbuild .\src\TestApp\TestApp.csproj /p:Configuration=%CONFIGURATION% /p:Platform=x86
 
 test_script:
 - dotnet test -c %CONFIGURATION% --no-build .\test\NETStandard.HttpListener.Tests
