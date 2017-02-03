@@ -3,6 +3,7 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -37,7 +38,7 @@ namespace Tests
                 var response = e.Response;
 
                 var x = request.Headers.AcceptEncoding;
-                
+
                 response.Headers.ContentType.Add("application/text");
 
                 var bytes = Encoding.UTF8.GetBytes("Hello World!");
@@ -65,7 +66,7 @@ namespace Tests
             {
                 var request = e.Request;
 
-                string content = null;
+                string content;
                 using (var streamReader = new StreamReader(request.InputStream))
                 {
                     content = await streamReader.ReadToEndAsync();
@@ -92,6 +93,52 @@ namespace Tests
 
                 Assert.Equal(responseContent, "Hey");
             }
+
+            listener.Close();
+        }
+
+        [Fact]
+        public async Task PostRequest2()
+        {
+            var listener = StartHttpListener(8083, async (sender, e) =>
+            {
+                var request = e.Request;
+
+                string content;
+                using (var streamReader = new StreamReader(request.InputStream))
+                {
+                    content = await streamReader.ReadToEndAsync();
+                }
+
+                var response = e.Response;
+
+                var bytes = Encoding.UTF8.GetBytes(content);
+                await response.OutputStream.WriteAsync(bytes, 0, bytes.Length);
+                await response.OutputStream.FlushAsync();
+
+                response.Close();
+            });
+
+            var webRequest = WebRequest.Create(url);
+            webRequest.Method = "POST";
+            webRequest.Headers[HttpRequestHeader.ContentLength] = "3";
+
+            Stream dataStream = await webRequest.GetRequestStreamAsync();
+            dataStream.Write(Encoding.ASCII.GetBytes("01"), 0, 2);
+            dataStream.Flush();
+            
+            byte[] buffer = new byte[3];
+            webRequest.GetResponseAsync().ContinueWith(tc =>
+            {
+                WebResponse webResponse = tc.Result;
+                using (Stream data = webResponse.GetResponseStream())
+                {
+                    data.Read(buffer, 0, 3);
+                }
+            }).Wait(1000);
+
+            // No data is returned because the client aborts
+            Assert.Equal(new byte[] { 0, 0, 0 }, buffer);
 
             listener.Close();
         }

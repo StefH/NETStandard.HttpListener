@@ -65,7 +65,7 @@ namespace System.Net.Http
 
                 char[] buffer = new char[contentLength];
 
-                await reader.ReadAsync(buffer, 0, contentLength);
+                await reader.ReadBlockAsync(buffer, 0, contentLength);
 
                 InputStream = new MemoryStream(encoding.GetBytes(buffer));
             }

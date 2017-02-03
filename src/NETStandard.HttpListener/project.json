@@ -1,5 +1,5 @@
 {
-    "version": "1.0.0.0",
+    "version": "1.0.1.0",
     "title": "NETStandard.HttpListener",
     "description": "HttpListener for .NET Core (NETStandard) and Universal Windows Platform (UWP)",
     "authors": [ "Robert Sundström", "Stef Heyenrath" ],
@@ -9,7 +9,8 @@
         "summary": "HttpListener for .NET Core (NETStandard) and Universal Windows Platform (UWP)",
         "licenseUrl": "https://raw.githubusercontent.com/StefH/NETStandard.HttpListener/master/LICENSE",
         "projectUrl": "https://github.com/StefH/NETStandard.HttpListener",
-        "tags": [ "Http", "Web Server", "HttpListener", "NetStandard", ".NET Core" ]
+        "tags": [ "Http", "Web Server", "HttpListener", "NetStandard", ".NET Core" ],
+        "releaseNotes": "Fixed a bug in HttpListenerRequest"
     },
 
     "dependencies": {
