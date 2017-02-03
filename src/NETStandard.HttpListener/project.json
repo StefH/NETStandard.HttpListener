@@ -3,7 +3,7 @@
     "title": "NETStandard.HttpListener",
     "description": "HttpListener for .NET Core (NETStandard) and Universal Windows Platform (UWP)",
     "authors": [ "Robert Sundström", "Stef Heyenrath" ],
-    "copyright": "Copyright © Robert Sundström 2016",
+    "copyright": "Copyright © Robert Sundström 2016, Stef Heyenrath 2017",
     "packOptions": {
         "owners": [ "Stef Heyenrath" ],
         "summary": "HttpListener for .NET Core (NETStandard) and Universal Windows Platform (UWP)",
