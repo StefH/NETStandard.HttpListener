@@ -31,7 +31,7 @@ build_script:
 #- cmd: msbuild .\src\TestApp\TestApp.csproj /p:Configuration=%CONFIGURATION% /p:Platform=x86
 
 test_script:
-- dotnet test -c %CONFIGURATION% --no-build .\test\NETStandard.HttpListener.Tests
+- dotnet test -c %CONFIGURATION% --no-build .\test\NETStandard.HttpListener.Tests\NETStandard.HttpListener.Tests.csproj
 
 after_test:
   - nuget.exe install OpenCover -ExcludeVersion
