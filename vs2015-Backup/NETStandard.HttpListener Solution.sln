@@ -1,8 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26403.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NETStandard.HttpListener", "src\NETStandard.HttpListener\NETStandard.HttpListener.xproj", "{0ECA641F-BD50-413A-876C-A7D4810EB906}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NETStandard.HttpListener.Tests", "test\NETStandard.HttpListener.Tests\NETStandard.HttpListener.Tests.xproj", "{C6FFB78D-EFBB-46C3-A0D1-68BF3436735E}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DF1E746A-72B0-4E19-93B3-5AB10C1FC11C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{CD898B0D-BE14-44D6-9B9A-8BA97E74CEB6}"
@@ -10,20 +14,17 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E8754D0E-970B-45A6-8B1B-0D5ED15099DE}"
 	ProjectSection(SolutionItems) = preProject
 		appveyor.yml = appveyor.yml
+		global.json = global.json
 		LICENSE.md = LICENSE.md
 		README.md = README.md
 	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NETStandard.HttpListener", "src\NETStandard.HttpListener\NETStandard.HttpListener.csproj", "{0ECA641F-BD50-413A-876C-A7D4810EB906}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NETStandard.HttpListener.Tests", "test\NETStandard.HttpListener.Tests\NETStandard.HttpListener.Tests.csproj", "{C6FFB78D-EFBB-46C3-A0D1-68BF3436735E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "src\TestApp\TestApp.csproj", "{CD908D7A-DEE6-48D3-8E5C-2EBC3851EF4B}"
 	ProjectSection(ProjectDependencies) = postProject
 		{0ECA641F-BD50-413A-876C-A7D4810EB906} = {0ECA641F-BD50-413A-876C-A7D4810EB906}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestConsoleApp", "src\TestConsoleApp\TestConsoleApp.csproj", "{28923ACA-8AA7-489F-BC38-A6CB5C469108}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "TestConsoleApp", "src\TestConsoleApp\TestConsoleApp.xproj", "{28923ACA-8AA7-489F-BC38-A6CB5C469108}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

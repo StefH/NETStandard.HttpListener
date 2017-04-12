@@ -2,14 +2,14 @@
 A simple library based on (https://github.com/robertsundstrom/HttpListener) that essentially allows for building your own HTTP server on .NET Core and the Universal Windows Platform (UWP).
 
 [![Build status](https://ci.appveyor.com/api/projects/status/192if73p5og2o2yq?svg=true)](https://ci.appveyor.com/project/StefH/netstandard-httplistener)
-
+[![Coverage Status](https://coveralls.io/repos/github/StefH/NETStandard.HttpListener/badge.svg?branch=master)](https://coveralls.io/github/StefH/NETStandard.HttpListener?branch=master)
 [![NuGet Badge](https://buildstats.info/nuget/NETStandard.HttpListener)](https://www.nuget.org/packages/NETStandard.HttpListener)
 
 ## Overview
 
 This library fills the void left by the missing System.Net.Http.HttpListener in .NET Core and Universal Windows Platform (UWP).
 
-By targetting .NET Core (NETStandard 1.3) and UWP, this API enables HTTP server scenarios on Windows 10 for IoT on Raspberry Pi (2 & 3).
+By targetting .NET Core (NETStandard 1.3) and UWP (TODO), this API enables HTTP server scenarios on Windows 10 for IoT on Raspberry Pi (2 & 3).
 
 Taking a modern approach, this API is not meant to be entirely compatible with the HttpListener found in the full .NET Framework on Windows desktop.
 
@@ -22,7 +22,7 @@ Contributions are most welcome.
 The solution consists of two projects with a common core targetting:
 
 1. .NET Core project - Windows, Linux and Mac OS X.
-2. Universal Windows Platform (UWP) - Windows 10 and up.
+2. Universal Windows Platform (UWP) - Windows 10 and up. (TODO)
 
 The API:s are generally similar, but may differ slightly on each platform due to their respective API constraints. However, the core concepts remain the same.
 
@@ -82,4 +82,3 @@ Also consider having a look at the unit tests.
 Here are some things to consider doing in the future:
 
 * Rewrite the HttpRequest parser and implement missing features, like authentication and the handling of content types.
-* Consolidate the two libraries (.NET Core and UWP) into one single .NET Standard-compliant library when possible to do so.
