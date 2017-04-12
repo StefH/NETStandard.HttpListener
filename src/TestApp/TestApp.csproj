@@ -127,9 +127,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="NETStandard.HttpListener">
-      <HintPath>..\NETStandard.HttpListener\bin\$(Configuration)\uap10.0\NETStandard.HttpListener.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\NETStandard.HttpListener\NETStandard.HttpListener.csproj">
+      <Project>{0eca641f-bd50-413a-876c-a7d4810eb906}</Project>
+      <Name>NETStandard.HttpListener</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

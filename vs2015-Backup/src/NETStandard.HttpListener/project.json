@@ -1,0 +1,52 @@
+{
+    "version": "1.0.1.0",
+    "title": "NETStandard.HttpListener",
+    "description": "HttpListener for .NET Core (NETStandard) and Universal Windows Platform (UWP)",
+    "authors": [ "Robert Sundström", "Stef Heyenrath" ],
+    "copyright": "Copyright © Robert Sundström 2016, Stef Heyenrath 2017",
+    "packOptions": {
+        "owners": [ "Stef Heyenrath" ],
+        "summary": "HttpListener for .NET Core (NETStandard) and Universal Windows Platform (UWP)",
+        "licenseUrl": "https://raw.githubusercontent.com/StefH/NETStandard.HttpListener/master/LICENSE",
+        "projectUrl": "https://github.com/StefH/NETStandard.HttpListener",
+        "tags": [ "Http", "Web Server", "HttpListener", "NetStandard", ".NET Core" ],
+        "releaseNotes": "Fixed a bug in HttpListenerRequest"
+    },
+
+    "dependencies": {
+        "JetBrains.Annotations": {
+            "version": "10.2.1",
+            "type": "build"
+        }
+    },
+
+    "frameworks": {
+        "netstandard1.3": {
+            "buildOptions": { "define": [ "NETSTANDARD" ] },
+            "imports": [
+                "dotnet5.4"
+            ],
+            "dependencies": {
+                "System.Collections": "4.3.0",
+                "System.IO": "4.3.0",
+                "System.Linq": "4.3.0",
+                "System.Net.Http": "4.3.0",
+                "System.Net.Sockets": "4.3.0",
+                "System.Runtime.Extensions": "4.3.0",
+                "System.Runtime.InteropServices": "4.3.0",
+                "System.Threading.Tasks": "4.3.0"
+            }
+        },
+        "uap10.0": {
+            "dependencies": {
+                "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
+                "System.Collections": "4.3.0",
+                "System.IO": "4.3.0",
+                "System.Linq": "4.3.0",
+                "System.Runtime.Extensions": "4.3.0",
+                "System.Runtime.InteropServices": "4.3.0",
+                "System.Threading.Tasks": "4.3.0"
+            }
+        }
+    }
+}
