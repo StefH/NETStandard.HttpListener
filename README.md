@@ -2,6 +2,7 @@
 A simple library based on (https://github.com/robertsundstrom/HttpListener) that essentially allows for building your own HTTP server on .NET Core and the Universal Windows Platform (UWP).
 
 [![Build status](https://ci.appveyor.com/api/projects/status/192if73p5og2o2yq?svg=true)](https://ci.appveyor.com/project/StefH/netstandard-httplistener)
+[![codecov](https://codecov.io/gh/StefH/NETStandard.HttpListener/branch/master/graph/badge.svg)](https://codecov.io/gh/StefH/NETStandard.HttpListener)
 [![Coverage Status](https://coveralls.io/repos/github/StefH/NETStandard.HttpListener/badge.svg?branch=master)](https://coveralls.io/github/StefH/NETStandard.HttpListener?branch=master)
 [![NuGet Badge](https://buildstats.info/nuget/NETStandard.HttpListener)](https://www.nuget.org/packages/NETStandard.HttpListener)
 
