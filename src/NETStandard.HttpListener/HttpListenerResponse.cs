@@ -2,7 +2,6 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
-using System.Diagnostics;
 
 namespace System.Net.Http
 {
@@ -71,10 +70,6 @@ namespace System.Net.Http
             try
             {
                 await outputStream.CopyToAsync(socketStream);
-            }
-            catch (IOException ex)
-            {
-                Debug.WriteLine(ex.Message);
             }
             finally
             {
