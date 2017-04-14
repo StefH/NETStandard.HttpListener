@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html data-ng-app="coverageApp">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE,chrome=1" />
+<title>Summary - Coverage Report</title>
+<link rel="stylesheet" type="text/css" href="report.css" />
+</head><body data-ng-controller="SummaryViewCtrl"><div class="container"><div class="containerleft">
+<h1>Summary</h1>
+<table class="overview table-fixed">
+<colgroup>
+<col class="column135" />
+<col />
+</colgroup>
+<tbody>
+<tr><th>Generated on:</th><td>14-4-2017 - 09:58:19</td></tr>
+<tr><th>Parser:</th><td>OpenCoverParser</td></tr>
+<tr><th>Assemblies:</th><td>1</td></tr>
+<tr><th>Classes:</th><td>17</td></tr>
+<tr><th>Files:</th><td>17</td></tr>
+<tr><th>Covered lines:</th><td>310</td></tr>
+<tr><th>Uncovered lines:</th><td>327</td></tr>
+<tr><th>Coverable lines:</th><td>637</td></tr>
+<tr><th>Total lines:</th><td>1304</td></tr>
+<tr><th>Line coverage:</th><td>48.6%</td></tr>
+<tr><th>Branch coverage:</th><td>22.6%</td></tr>
+</tbody>
+</table>
+<h1>Assemblies</h1>
+<div data-ng-if="filteringEnabled" data-reactive-table data-assemblies="assemblies" data-branch-coverage-available="branchCoverageAvailable"></div>
+<div data-ng-if="!filteringEnabled">
+<div class="ng-hide customizebox" data-ng-show="true"><input data-ng-click="enableFiltering()" value="Enable filtering" title="This may take some time since the report contains many classes." type="submit" /></div>
+</div>
+<table data-ng-if="!filteringEnabled" class="overview table-fixed">
+<colgroup>
+<col />
+<col class="column90" />
+<col class="column105" />
+<col class="column100" />
+<col class="column70" />
+<col class="column60" />
+<col class="column112" />
+<col class="column60" />
+<col class="column112" />
+</colgroup>
+<thead><tr><th>Name</th><th class="right">Covered</th><th class="right">Uncovered</th><th class="right">Coverable</th><th class="right">Total</th><th class="center" colspan="2">Line coverage</th><th class="center" colspan="2">Branch coverage</th></tr></thead>
+<tbody>
+<tr><th>NETStandard.HttpListener</th><th class="right">310</th><th class="right">327</th><th class="right">637</th><th class="right">1304</th><th title="LineCoverage" class="right">48.6%</th><th><table class="coverage"><tr><td class="green covered49">&nbsp;</td><td class="red covered51">&nbsp;</td></tr></table></th><th class="right">22.6%</th><th><table class="coverage"><tr><td class="green covered23">&nbsp;</td><td class="red covered77">&nbsp;</td></tr></table></th></tr>
+<tr><td><a href="NETStandard.HttpListener_HttpListener.htm">System.Net.Http.HttpListener</a></td><td class="right">71</td><td class="right">35</td><td class="right">106</td><td class="right">221</td><td title="LineCoverage" class="right">66.9%</td><td><table class="coverage"><tr><td class="green covered67">&nbsp;</td><td class="red covered33">&nbsp;</td></tr></table></td><td class="right">50%</td><td><table class="coverage"><tr><td class="green covered50">&nbsp;</td><td class="red covered50">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="NETStandard.HttpListener_HttpListenerContext.htm">System.Net.Http.HttpListenerContext</a></td><td class="right">0</td><td class="right">7</td><td class="right">7</td><td class="right">19</td><td title="LineCoverage" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="NETStandard.HttpListener_HttpListenerHeaders.htm">System.Net.Http.HttpListenerHeaders</a></td><td class="right">35</td><td class="right">21</td><td class="right">56</td><td class="right">108</td><td title="LineCoverage" class="right">62.5%</td><td><table class="coverage"><tr><td class="green covered62">&nbsp;</td><td class="red covered38">&nbsp;</td></tr></table></td><td class="right">25%</td><td><table class="coverage"><tr><td class="green covered25">&nbsp;</td><td class="red covered75">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="NETStandard.HttpListener_HttpListenerHeaderValueCollection_1.htm">System.Net.Http.HttpListenerHeaderValueCollection`1</a></td><td class="right">36</td><td class="right">22</td><td class="right">58</td><td class="right">91</td><td title="LineCoverage" class="right">62%</td><td><table class="coverage"><tr><td class="green covered62">&nbsp;</td><td class="red covered38">&nbsp;</td></tr></table></td><td class="right">60%</td><td><table class="coverage"><tr><td class="green covered60">&nbsp;</td><td class="red covered40">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="NETStandard.HttpListener_HttpListenerRequest.htm">System.Net.Http.HttpListenerRequest</a></td><td class="right">57</td><td class="right">6</td><td class="right">63</td><td class="right">149</td><td title="LineCoverage" class="right">90.4%</td><td><table class="coverage"><tr><td class="green covered90">&nbsp;</td><td class="red covered10">&nbsp;</td></tr></table></td><td class="right">100%</td><td><table class="coverage"><tr><td class="green covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="NETStandard.HttpListener_HttpListenerRequestEventArgs.htm">System.Net.Http.HttpListenerRequestEventArgs</a></td><td class="right">7</td><td class="right">0</td><td class="right">7</td><td class="right">21</td><td title="LineCoverage" class="right">100%</td><td><table class="coverage"><tr><td class="green covered100">&nbsp;</td></tr></table></td><td class="right"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="NETStandard.HttpListener_HttpListenerRequestExtensions.htm">System.Net.Http.HttpListenerRequestExtensions</a></td><td class="right">0</td><td class="right">20</td><td class="right">20</td><td class="right">50</td><td title="LineCoverage" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="NETStandard.HttpListener_HttpListenerRequestHeaders.htm">System.Net.Http.HttpListenerRequestHeaders</a></td><td class="right">15</td><td class="right">14</td><td class="right">29</td><td class="right">68</td><td title="LineCoverage" class="right">51.7%</td><td><table class="coverage"><tr><td class="green covered52">&nbsp;</td><td class="red covered48">&nbsp;</td></tr></table></td><td class="right">25%</td><td><table class="coverage"><tr><td class="green covered25">&nbsp;</td><td class="red covered75">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="NETStandard.HttpListener_HttpListenerResponse.htm">System.Net.Http.HttpListenerResponse</a></td><td class="right">38</td><td class="right">30</td><td class="right">68</td><td class="right">164</td><td title="LineCoverage" class="right">55.8%</td><td><table class="coverage"><tr><td class="green covered56">&nbsp;</td><td class="red covered44">&nbsp;</td></tr></table></td><td class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="NETStandard.HttpListener_HttpListenerResponseHeaders.htm">System.Net.Http.HttpListenerResponseHeaders</a></td><td class="right">5</td><td class="right">20</td><td class="right">25</td><td class="right">48</td><td title="LineCoverage" class="right">20%</td><td><table class="coverage"><tr><td class="green covered20">&nbsp;</td><td class="red covered80">&nbsp;</td></tr></table></td><td class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="NETStandard.HttpListener_HttpMethods.htm">System.Net.Http.HttpMethods</a></td><td class="right">5</td><td class="right">0</td><td class="right">5</td><td class="right">11</td><td title="LineCoverage" class="right">100%</td><td><table class="coverage"><tr><td class="green covered100">&nbsp;</td></tr></table></td><td class="right"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="NETStandard.HttpListener_HttpResponseStatusCodeExtensions.htm">System.Net.Http.HttpResponseStatusCodeExtensions</a></td><td class="right">0</td><td class="right">20</td><td class="right">20</td><td class="right">35</td><td title="LineCoverage" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="NETStandard.HttpListener_HttpUtility.htm">System.Net.Http.HttpUtility</a></td><td class="right">0</td><td class="right">20</td><td class="right">20</td><td class="right">39</td><td title="LineCoverage" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="NETStandard.HttpListener_HttpValue.htm">System.Net.Http.HttpValue</a></td><td class="right">0</td><td class="right">7</td><td class="right">7</td><td class="right">14</td><td title="LineCoverage" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="NETStandard.HttpListener_HttpValueCollection.htm">System.Net.Http.HttpValueCollection</a></td><td class="right">0</td><td class="right">104</td><td class="right">104</td><td class="right">174</td><td title="LineCoverage" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="NETStandard.HttpListener_TcpClientAdapter.htm">System.Net.Http.TcpClientAdapter</a></td><td class="right">19</td><td class="right">0</td><td class="right">19</td><td class="right">45</td><td title="LineCoverage" class="right">100%</td><td><table class="coverage"><tr><td class="green covered100">&nbsp;</td></tr></table></td><td class="right"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="NETStandard.HttpListener_TcpListenerAdapter.htm">System.Net.Http.TcpListenerAdapter</a></td><td class="right">22</td><td class="right">1</td><td class="right">23</td><td class="right">47</td><td title="LineCoverage" class="right">95.6%</td><td><table class="coverage"><tr><td class="green covered96">&nbsp;</td><td class="red covered4">&nbsp;</td></tr></table></td><td class="right"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+</tbody>
+</table>
+<div class="footer">Generated by: ReportGenerator 2.5.6.0<br />14-4-2017 - 09:58:19<br /><a href="https://github.com/danielpalme/ReportGenerator">GitHub</a> | <a href="http://www.palmmedia.de">www.palmmedia.de</a></div></div></div>
+<script type="text/javascript" src="combined.js"></script>
+</body></html>
