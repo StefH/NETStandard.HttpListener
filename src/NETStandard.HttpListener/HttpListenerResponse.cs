@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
@@ -55,22 +55,26 @@ namespace System.Net.Http
 
         private async Task SendMessage()
         {
-            var outputStream = OutputStream as MemoryStream;
-            outputStream.Seek(0, SeekOrigin.Begin);
+                var outputStream = OutputStream as MemoryStream;
+                outputStream.Seek(0, SeekOrigin.Begin);
 
-            var socketStream = _client.GetOutputStream();
+                var socketStream = _client.GetOutputStream();
 
-            string header = $"{Version} {StatusCode} {ReasonPhrase}\r\n" +
-                            Headers +
-                            $"Content-Length: {outputStream.Length}\r\n" +
-                            "\r\n";
+                string header = $"{Version} {StatusCode} {ReasonPhrase}\r\n" +
+                                Headers +
+                                $"Content-Length: {outputStream.Length}\r\n" +
+                                "\r\n";
+                byte[] headerArray = Encoding.UTF8.GetBytes(header);
 
-            byte[] headerArray = Encoding.UTF8.GetBytes(header);
-            await socketStream.WriteAsync(headerArray, 0, headerArray.Length);
-            await outputStream.CopyToAsync(socketStream);
-
-            await socketStream.FlushAsync();
-
+                await socketStream.WriteAsync(headerArray, 0, headerArray.Length);
+            try
+            {
+                await outputStream.CopyToAsync(socketStream);
+            }
+            finally
+            {
+                await socketStream.FlushAsync();
+            }
         }
 
         /// <summary>
