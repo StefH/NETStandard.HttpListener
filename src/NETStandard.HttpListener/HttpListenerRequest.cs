@@ -51,13 +51,13 @@ namespace System.Net.Http
             var httpMethod = line[0];
 
             Version = line[2];
-            Method = httpMethod;
-            RequestUri = url;
+            HttpMethod = httpMethod;
+            Url = url;
         }
 
         private async Task PrepareInputStream(StreamReader reader)
         {
-            if (Method == HttpMethods.Post || Method == HttpMethods.Put || Method == HttpMethods.Patch)
+            if (HttpMethod == HttpMethods.Post || HttpMethod == HttpMethods.Put || HttpMethod == HttpMethods.Patch)
             {
                 Encoding encoding = Encoding.UTF8;
 
@@ -106,26 +106,31 @@ namespace System.Net.Http
         /// <summary>
         /// Gets the URI send with the request.
         /// </summary>
-        public Uri RequestUri { get; private set; }
+        [PublicAPI]
+        public Uri Url { get; private set; }
 
         /// <summary>
         /// Gets the HTTP method.
         /// </summary>
-        public string Method { get; private set; }
+        [PublicAPI]
+        public string HttpMethod { get; private set; }
 
         /// <summary>
         /// Gets the headers of the HTTP request.
         /// </summary>
+        [PublicAPI]
         public HttpListenerRequestHeaders Headers { get; }
 
         /// <summary>
         /// Gets the stream containing the content sent with the request.
         /// </summary>
+        [PublicAPI]
         public Stream InputStream { get; private set; }
 
         /// <summary>
         /// Gets the HTTP version.
         /// </summary>
+        [PublicAPI]
         public string Version { get; private set; }
 
         /// <summary>
@@ -137,7 +142,7 @@ namespace System.Net.Http
         /// <summary>
         /// Reads the content of the request as a string.
         /// </summary>
-        /// <returns></returns>
+        [PublicAPI]
         public async Task<string> ReadContentAsStringAsync()
         {
             var length = InputStream.Length;
