@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
@@ -64,13 +64,18 @@ namespace System.Net.Http
                             Headers +
                             $"Content-Length: {outputStream.Length}\r\n" +
                             "\r\n";
-
             byte[] headerArray = Encoding.UTF8.GetBytes(header);
+
             await socketStream.WriteAsync(headerArray, 0, headerArray.Length);
-            await outputStream.CopyToAsync(socketStream);
 
-            await socketStream.FlushAsync();
-
+            try
+            {
+                await outputStream.CopyToAsync(socketStream);
+            }
+            finally
+            {
+                await socketStream.FlushAsync();
+            }
         }
 
         /// <summary>
