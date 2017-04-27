@@ -13,6 +13,9 @@ namespace System.Net.Http
 
         private HttpListenerResponse _response;
 
+        public HttpListenerHeaders() : base(StringComparer.OrdinalIgnoreCase)
+        { }
+
         internal void ParseHeaderLines(IEnumerable<string> lines)
         {
             foreach (var headerLine in lines)
@@ -57,7 +60,7 @@ namespace System.Net.Http
                     {
                         return int.Parse(headerValue);
                     }
-                    return -1;
+                    return 0;
                 }
 
                 var response = GetResponse();
