@@ -57,7 +57,7 @@ namespace System.Net.Http
 
         private async Task PrepareInputStream(StreamReader reader)
         {
-            if (HttpMethod == HttpMethods.Post || HttpMethod == HttpMethods.Put || HttpMethod == HttpMethods.Patch)
+            if (HttpMethods.CanHaveContent(HttpMethod))
             {
                 Encoding encoding = Encoding.UTF8;
 
