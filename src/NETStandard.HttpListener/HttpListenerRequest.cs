@@ -82,7 +82,7 @@ namespace System.Net.Http
             var request = new StringBuilder();
 
             string line;
-            while ((line = await reader.ReadLineAsync()) != "")
+            while ((line = await reader.ReadLineAsync()) != "" && line != null)
             {
                 request.AppendLine(line);
             }
