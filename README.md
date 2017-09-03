@@ -10,7 +10,7 @@ A simple library based on (https://github.com/robertsundstrom/HttpListener) that
 
 This library fills the void left by the missing System.Net.Http.HttpListener in .NET Core and Universal Windows Platform (UWP).
 
-By targetting .NET Core (NETStandard 1.3) and UWP (TODO), this API enables HTTP server scenarios on Windows 10 for IoT on Raspberry Pi (2 & 3).
+By targetting .NET Core (NETStandard 1.3) and UWP (10.0.10240.0), this API enables HTTP server scenarios on Windows 10 for IoT on Raspberry Pi (2 & 3).
 
 Taking a modern approach, this API is not meant to be entirely compatible with the HttpListener found in the full .NET Framework on Windows desktop.
 
@@ -23,7 +23,7 @@ Contributions are most welcome.
 The solution consists of two projects with a common core targetting:
 
 1. .NET Core project - Windows, Linux and Mac OS X.
-2. Universal Windows Platform (UWP) - Windows 10 and up. (TODO)
+2. Universal Windows Platform (UWP) - Windows 10 and up. (10.0.10240.0)
 
 The API:s are generally similar, but may differ slightly on each platform due to their respective API constraints. However, the core concepts remain the same.
 

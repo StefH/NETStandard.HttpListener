@@ -4,9 +4,9 @@ using System.Net.Http;
 using Windows.UI.Popups;
 using Windows.UI.Xaml.Controls;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
-namespace TestApp
+namespace WindowsUniversalApp
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -40,7 +40,7 @@ namespace TestApp
             var request = e.Request;
             var response = e.Response;
 
-            if (request.Method == HttpMethods.Get)
+            if (request.HttpMethod == HttpMethods.Get)
             {
                 string content = @"<h2>Hello! What's your name?</h2>
                                 <form method=""POST"" action=""/?test=2"">
@@ -50,9 +50,9 @@ namespace TestApp
 
                 await response.WriteContentAsync(MakeDocument(content));
             }
-            else if (request.Method == HttpMethods.Post)
+            else if (request.HttpMethod == HttpMethods.Post)
             {
-                var param = request.RequestUri.ParseQueryParameters();
+                var param = request.Url.ParseQueryParameters();
 
                 var data = await request.ReadUrlEncodedContentAsync();
                 var name = data["name"];
