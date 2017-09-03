@@ -22,7 +22,7 @@ install:
 
 build_script:
 - dotnet restore .\src\NETStandard.HttpListener\NETStandard.HttpListener.csproj
-- dotnet restore .\src\TestConsoleApp\TestConsoleApp.csproj
+- dotnet restore .\src\TestConsoleApp\ConsoleApp (NETCore 1.0).csproj
 - dotnet restore .\test\NETStandard.HttpListener.Tests\NETStandard.HttpListener.Tests.csproj
 
 - dotnet build .\src\NETStandard.HttpListener\NETStandard.HttpListener.csproj -c %CONFIGURATION%
