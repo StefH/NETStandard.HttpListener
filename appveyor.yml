@@ -26,7 +26,7 @@ build_script:
 - dotnet restore .\test\NETStandard.HttpListener.Tests\NETStandard.HttpListener.Tests.csproj
 
 - dotnet build .\src\NETStandard.HttpListener\NETStandard.HttpListener.csproj -c %CONFIGURATION%
-- dotnet build .\src\TestConsoleApp\TestConsoleApp.csproj -c %CONFIGURATION%
+- dotnet build .\src\TestConsoleApp\ConsoleApp (NETCore 1.0).csproj -c %CONFIGURATION%
 - dotnet build .\test\NETStandard.HttpListener.Tests\NETStandard.HttpListener.Tests.csproj -c %CONFIGURATION%
 #- cmd: msbuild .\src\TestApp\TestApp.csproj /p:Configuration=%CONFIGURATION% /p:Platform=x86
 
