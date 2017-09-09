@@ -43,13 +43,23 @@ namespace TestConsoleApp
                 var param = request.Url.ParseQueryParameters();
 
                 var data = await request.ReadUrlEncodedContentAsync();
-                var name = data["name"];
 
-                string content = $"<h2>Hi, {name}! Nice to meet you.</h2>";
+                if (data != null && data.ContainsKey("name"))
+                {
+                    string name = data["name"];
 
-                await response.WriteContentAsync(MakeDocument(content));
+                    string content = $"<h2>Hi, {name}! Nice to meet you.</h2>";
 
-                Console.WriteLine($"--> Hi, {name}! Nice to meet you.");
+                    await response.WriteContentAsync(MakeDocument(content));
+
+                    Console.WriteLine($"--> Hi, {name}! Nice to meet you.");
+                }
+                else
+                {
+                    await response.WriteContentAsync(MakeDocument("Please provide name."));
+
+                    Console.WriteLine($"--> Please provide name.");
+                }
             }
             else
             {

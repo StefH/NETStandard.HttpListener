@@ -20,7 +20,7 @@ namespace System.Net.Http
         {
             foreach (var headerLine in lines)
             {
-                var parts = headerLine.Split(new char[] { ':' }, 2);
+                var parts = headerLine.Split(new char[] { CharConstants.Colon }, 2);
                 var key = parts[0];
                 var value = parts[1].Trim();
                 Add(key, value);
@@ -32,7 +32,7 @@ namespace System.Net.Http
             var sb = new StringBuilder();
             foreach (var header in this)
             {
-                sb.Append($"{header.Key}: {header.Value}\r\n");
+                sb.Append($"{header.Key}: {header.Value}{CharConstants.CRLF}");
             }
             return sb.ToString();
         }

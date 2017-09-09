@@ -7,6 +7,8 @@ namespace System.Net.Http
 {
     public sealed class HttpListenerResponse : IDisposable
     {
+        private static readonly Encoding DefaultEncoding = Encoding.UTF8;
+
         private readonly TcpClientAdapter _client;
 
         internal HttpListenerResponse(HttpListenerRequest request, TcpClientAdapter client)
@@ -60,11 +62,12 @@ namespace System.Net.Http
 
             var socketStream = _client.GetOutputStream();
 
-            string header = $"{Version} {StatusCode} {ReasonPhrase}\r\n" +
+            string header = $"{Version} {StatusCode} {ReasonPhrase}" + CharConstants.CRLF +
                             Headers +
-                            $"Content-Length: {outputStream.Length}\r\n" +
-                            "\r\n";
-            byte[] headerArray = Encoding.UTF8.GetBytes(header);
+                            $"Content-Length: {outputStream.Length}" + CharConstants.CRLF +
+                            CharConstants.CRLF;
+
+            byte[] headerArray = DefaultEncoding.GetBytes(header);
 
             await socketStream.WriteAsync(headerArray, 0, headerArray.Length);
 
@@ -85,7 +88,7 @@ namespace System.Net.Http
         /// <returns></returns>
         public Task WriteContentAsync(string text)
         {
-            var buffer = Encoding.UTF8.GetBytes(text);
+            var buffer = DefaultEncoding.GetBytes(text);
             return OutputStream.WriteAsync(buffer, 0, buffer.Length);
         }
 
@@ -117,16 +120,15 @@ namespace System.Net.Http
             ReasonPhrase = "Moved permanently";
             Headers.Location = redirectLocation;
 
-            string header = $"{Version} {StatusCode} {ReasonPhrase}\r\n" +
+            string header = $"{Version} {StatusCode} {ReasonPhrase}" + CharConstants.CRLF +
                             $"Location: {Headers.Location}" +
-                            "Content-Length: 0\r\n" +
-                            "Connection: close\r\n" +
-                            "\r\n";
+                            "Content-Length: 0" + CharConstants.CRLF +
+                            "Connection: close" + CharConstants.CRLF +
+                            CharConstants.CRLF;
 
-            byte[] headerArray = Encoding.UTF8.GetBytes(header);
+            byte[] headerArray = DefaultEncoding.GetBytes(header);
             await outputStream.WriteAsync(headerArray, 0, headerArray.Length);
             await outputStream.FlushAsync();
-
         }
 
         #region IDisposable Support

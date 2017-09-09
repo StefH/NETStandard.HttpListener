@@ -9,6 +9,8 @@ namespace System.Net.Http
 {
     public sealed class HttpListenerRequest
     {
+        private static readonly Encoding DefaultEncoding = Encoding.UTF8;
+
         private readonly TcpClientAdapter _client;
 
         internal HttpListenerRequest(TcpClientAdapter client)
@@ -28,14 +30,14 @@ namespace System.Net.Http
             var remoteEnpoint = _client.RemoteEndPoint;
 
             // TODO : This code needs to be rewritten and simplified.
-            var requestLines = request.ToString().Split('\n');
-            string requestMethod = requestLines[0].TrimEnd('\r');
-            string[] requestParts = requestMethod.Split(' ');
+            string[] requestLines = request.ToString().Split(CharConstants.NL);
+            string requestMethod = requestLines[0].TrimEnd(CharConstants.CR);
+            string[] requestParts = requestMethod.Split(CharConstants.Space);
 
             LocalEndpoint = localEndpoint;
             RemoteEndpoint = remoteEnpoint;
 
-            string[] lines = request.ToString().Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] lines = request.ToString().Split(new[] { CharConstants.CR, CharConstants.NL }, StringSplitOptions.RemoveEmptyEntries);
 
             ParseHeaders(lines);
             ParseRequestLine(lines);
@@ -45,7 +47,7 @@ namespace System.Net.Http
 
         private void ParseRequestLine(string[] lines)
         {
-            var line = lines.ElementAt(0).Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var line = lines.ElementAt(0).Split(new[] { CharConstants.Space }, StringSplitOptions.RemoveEmptyEntries);
 
             var url = new UriBuilder(Headers.Host + line[1]).Uri;
             var httpMethod = line[0];
@@ -59,15 +61,16 @@ namespace System.Net.Http
         {
             if (HttpMethods.CanHaveContent(HttpMethod))
             {
-                Encoding encoding = Encoding.UTF8;
+                int contentLength = (int)Headers.ContentLength;
 
-                var contentLength = (int)Headers.ContentLength;
+                if (contentLength > 0)
+                {
+                    char[] buffer = new char[contentLength];
 
-                char[] buffer = new char[contentLength];
+                    int bytesRead = await reader.ReadBlockAsync(buffer, 0, contentLength);
 
-                await reader.ReadBlockAsync(buffer, 0, contentLength);
-
-                InputStream = new MemoryStream(encoding.GetBytes(buffer));
+                    InputStream = new MemoryStream(DefaultEncoding.GetBytes(buffer));
+                }
             }
         }
 
@@ -82,7 +85,7 @@ namespace System.Net.Http
             var request = new StringBuilder();
 
             string line;
-            while ((line = await reader.ReadLineAsync()) != "" && line != null)
+            while ((line = await reader.ReadLineAsync()) != string.Empty && line != null)
             {
                 request.AppendLine(line);
             }
@@ -145,10 +148,16 @@ namespace System.Net.Http
         [PublicAPI]
         public async Task<string> ReadContentAsStringAsync()
         {
-            var length = InputStream.Length;
+            if (InputStream == null)
+            {
+                return null;
+            }
+
+            long length = InputStream.Length;
             byte[] buffer = new byte[length];
+
             await InputStream.ReadAsync(buffer, 0, (int)length);
-            return Encoding.UTF8.GetString(buffer);
+            return DefaultEncoding.GetString(buffer);
         }
     }
 }

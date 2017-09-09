@@ -33,7 +33,12 @@ namespace System.Net.Http
         /// <returns></returns>
         public static async Task<IDictionary<string, string>> ReadUrlEncodedContentAsync(this HttpListenerRequest request)
         {
-            var content = await request.ReadContentAsStringAsync();
+            string content = await request.ReadContentAsStringAsync();
+            if (content == null)
+            {
+                return null;
+            }
+
             var data = HttpUtility.ParseQueryString(content);
 
             var values = new Dictionary<string, string>();
