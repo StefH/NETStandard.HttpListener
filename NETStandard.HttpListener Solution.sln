@@ -24,6 +24,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsUniversalClassLibrary", "src\WindowsUniversalClassLibrary\WindowsUniversalClassLibrary.csproj", "{1C49C03F-D9C0-4793-8741-426A1C543C2F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsUniversalApp", "src\WindowsUniversalApp\WindowsUniversalApp.csproj", "{BA524443-6C44-472B-B1C2-D252D64AA2B4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0ECA641F-BD50-413A-876C-A7D4810EB906} = {0ECA641F-BD50-413A-876C-A7D4810EB906}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

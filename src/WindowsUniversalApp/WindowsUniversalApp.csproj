@@ -104,6 +104,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="readme.md" />
     <None Include="WindowsUniversalApp_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -132,9 +133,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="NETStandard.HttpListener, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="NETStandard.HttpListener, Version=1.0.3.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\src\NETStandard.HttpListener\bin\$(Configuration)\netstandard1.3\NETStandard.HttpListener.dll</HintPath>
+      <HintPath>..\NETStandard.HttpListener\bin\$(Configuration)\NETStandard1.3\NETStandard.HttpListener.dll</HintPath>
     </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
