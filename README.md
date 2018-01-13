@@ -1,5 +1,5 @@
-# NETStandard.HttpListener .NET Core and UWP
-A simple library based on (https://github.com/robertsundstrom/HttpListener) that essentially allows for building your own HTTP server on .NET Core and the Universal Windows Platform (UWP).
+# NETStandard.HttpListener .NETStandard 1.3 and UWP
+A simple library based on (https://github.com/robertsundstrom/HttpListener) that essentially allows for building your own HTTP server on .NETStandard 1.3 and the Universal Windows Platform (UWP).
 
 [![Build status](https://ci.appveyor.com/api/projects/status/192if73p5og2o2yq?svg=true)](https://ci.appveyor.com/project/StefH/netstandard-httplistener)
 [![codecov](https://codecov.io/gh/StefH/NETStandard.HttpListener/branch/master/graph/badge.svg)](https://codecov.io/gh/StefH/NETStandard.HttpListener)
@@ -10,7 +10,7 @@ A simple library based on (https://github.com/robertsundstrom/HttpListener) that
 
 This library fills the void left by the missing System.Net.Http.HttpListener in .NET Core and Universal Windows Platform (UWP).
 
-By targetting .NET Core (NETStandard 1.3) and UWP (10.0.10240.0), this API enables HTTP server scenarios on Windows 10 for IoT on Raspberry Pi (2 & 3).
+By targetting NETStandard 1.3 and UWP (10.0.10240.0), this API enables HTTP server scenarios on Windows 10 for IoT on Raspberry Pi (2 & 3).
 
 Taking a modern approach, this API is not meant to be entirely compatible with the HttpListener found in the full .NET Framework on Windows desktop.
 
@@ -22,35 +22,37 @@ Contributions are most welcome.
 
 The solution consists of two projects with a common core targetting:
 
-1. .NET Core project - Windows, Linux and Mac OS X.
+1. .NET Core 1.1 project - Windows, Linux and Mac OS X.
 2. Universal Windows Platform (UWP) - Windows 10 and up. (10.0.10240.0)
 
 The API:s are generally similar, but may differ slightly on each platform due to their respective API constraints. However, the core concepts remain the same.
 
-On .NET Core it uses .NET:s TcpListener and TcpClient.
+On .NET Core it uses .NET's TcpListener and TcpClient.
 
 On UWP it uses Windows Runtime's StreamSocketListener and StreamSocket.
 
 ## Sample
-Add the using statement.
+Add the using statements.
 
 ```CSharp
-...
+using System;
+using System.Net;
 using System.Net.Http;
 ```
 
 The code used in this sample should be the same on any platform.
 
-```CSharp
+``` CSharp
 var listener = new HttpListener(IPAddress.Parse("127.0.0.1"), 8081);
-try 
+try
 {
-	listener.Request += async (sender, context) => {
+	listener.Request += async (sender, context) =>
+	{
 		var request = context.Request;
 		var response = context.Response;
-		if(request.Method == HttpMethod.Get) 
+		if (request.HttpMethod == HttpMethods.Get)
 		{
-			await response.WriteAsync($"Hello from Server at: {DateTime.Now}\r\n");
+			await response.WriteContentAsync($"Hello from Server at: {DateTime.Now}\r\n");
 		}
 		else
 		{
@@ -64,11 +66,11 @@ try
 	Console.WriteLine("Press any key to exit.");
 	Console.ReadKey();
 }
-catch(Exception exc) 
+catch (Exception exc)
 {
 	Console.WriteLine(exc.ToString());
 }
-finally 
+finally
 {
 	listener.Close();
 }

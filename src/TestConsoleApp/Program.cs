@@ -6,6 +6,41 @@ namespace TestConsoleApp
 {
     public class Program
     {
+        private static void DemoCode()
+        {
+            var listener = new HttpListener(IPAddress.Parse("127.0.0.1"), 8081);
+            try
+            {
+                listener.Request += async (sender, context) =>
+                {
+                    var request = context.Request;
+                    var response = context.Response;
+                    if (request.HttpMethod == HttpMethods.Get)
+                    {
+                        await response.WriteContentAsync($"Hello from Server at: {DateTime.Now}\r\n");
+                    }
+                    else
+                    {
+                        response.MethodNotAllowed();
+                    }
+                    // Close the HttpResponse to send it back to the client.
+                    response.Close();
+                };
+                listener.Start();
+
+                Console.WriteLine("Press any key to exit.");
+                Console.ReadKey();
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine(exc.ToString());
+            }
+            finally
+            {
+                listener.Close();
+            }
+        }
+
         public static void Main(string[] args)
         {
             int port = 18081;
