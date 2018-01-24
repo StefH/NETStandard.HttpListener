@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
+using NETStandard.HttpListener.Util;
 
 namespace System.Net.Http
 {
@@ -47,13 +48,12 @@ namespace System.Net.Http
 
         private void ParseRequestLine(string[] lines)
         {
-            var line = lines.ElementAt(0).Split(new[] { CharConstants.Space }, StringSplitOptions.RemoveEmptyEntries);
+            string[] items = lines.ElementAt(0).Split(new[] { CharConstants.Space }, StringSplitOptions.RemoveEmptyEntries);
 
-            var url = new UriBuilder(Headers.Host + line[1]).Uri;
-            var httpMethod = line[0];
+            var url = HostParserUtil.Parse(Headers.Host, items[1]);
 
-            Version = line[2];
-            HttpMethod = httpMethod;
+            Version = items[2];
+            HttpMethod = items[0];
             Url = url;
         }
 

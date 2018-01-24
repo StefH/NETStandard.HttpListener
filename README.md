@@ -27,7 +27,7 @@ The solution consists of two projects with a common core targetting:
 
 The API:s are generally similar, but may differ slightly on each platform due to their respective API constraints. However, the core concepts remain the same.
 
-On .NET Core it uses .NET's TcpListener and TcpClient.
+On .NET Core it uses .NET's TCPListener and TCPClient.
 
 On UWP it uses Windows Runtime's StreamSocketListener and StreamSocket.
 

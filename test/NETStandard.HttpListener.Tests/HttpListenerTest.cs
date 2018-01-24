@@ -3,23 +3,22 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Tests
+namespace NETStandard.HttpListener.Tests
 {
     public class HttpListenerTest
     {
         private string address;
         private Uri url;
 
-        private HttpListener StartHttpListener(int port, EventHandler<HttpListenerRequestEventArgs> requestHandler = null)
+        private System.Net.Http.HttpListener StartHttpListener(int port, EventHandler<HttpListenerRequestEventArgs> requestHandler = null)
         {
             address = "127.0.0.1";
             url = (new UriBuilder($"http://{address}:{port}/test")).Uri;
 
-            var listener = new HttpListener(IPAddress.Parse(address), port);
+            var listener = new System.Net.Http.HttpListener(IPAddress.Parse(address), port);
             if (requestHandler != null)
             {
                 listener.Request += requestHandler;

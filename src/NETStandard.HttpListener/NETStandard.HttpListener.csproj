@@ -4,13 +4,13 @@
     <Description>HttpListener for .NET Core (NETStandard) and Universal Windows Platform (UWP)</Description>
     <Copyright>Copyright © Robert Sundström 2016, Stef Heyenrath 2017</Copyright>
     <AssemblyTitle>NETStandard.HttpListener</AssemblyTitle>
-    <VersionPrefix>1.0.3.3</VersionPrefix>
+    <VersionPrefix>1.0.3.4</VersionPrefix>
     <Authors>Robert Sundström;Stef Heyenrath</Authors>
     <TargetFrameworks>netstandard1.3</TargetFrameworks>
     <AssemblyName>NETStandard.HttpListener</AssemblyName>
     <PackageId>NETStandard.HttpListener</PackageId>
     <PackageTags>Http;Web Server;HttpListener;NetStandard;.NET Core</PackageTags>
-    <PackageReleaseNotes>Fixed issue #15.</PackageReleaseNotes>
+    <PackageReleaseNotes>Fixed issue #18.</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/StefH/NETStandard.HttpListener</PackageProjectUrl>
     <PackageLicenseUrl>https://raw.githubusercontent.com/StefH/NETStandard.HttpListener/master/LICENSE</PackageLicenseUrl>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
