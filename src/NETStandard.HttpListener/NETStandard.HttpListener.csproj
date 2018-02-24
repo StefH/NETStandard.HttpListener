@@ -4,7 +4,7 @@
     <Description>HttpListener for .NET Core (NETStandard) and Universal Windows Platform (UWP)</Description>
     <Copyright>Copyright © Robert Sundström 2016, Stef Heyenrath 2017</Copyright>
     <AssemblyTitle>NETStandard.HttpListener</AssemblyTitle>
-    <VersionPrefix>1.0.3.4</VersionPrefix>
+    <VersionPrefix>1.0.3.5</VersionPrefix>
     <Authors>Robert Sundström;Stef Heyenrath</Authors>
     <TargetFrameworks>netstandard1.3</TargetFrameworks>
     <AssemblyName>NETStandard.HttpListener</AssemblyName>
