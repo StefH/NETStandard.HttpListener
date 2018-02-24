@@ -121,7 +121,7 @@ namespace System.Net.Http
             Headers.Location = redirectLocation;
 
             string header = $"{Version} {StatusCode} {ReasonPhrase}" + CharConstants.CRLF +
-                            $"Location: {Headers.Location}" +
+                            $"Location: {Headers.Location}" + CharConstants.CRLF +
                             "Content-Length: 0" + CharConstants.CRLF +
                             "Connection: close" + CharConstants.CRLF +
                             CharConstants.CRLF;
